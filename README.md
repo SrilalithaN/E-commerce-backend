@@ -47,4 +47,4 @@ This project is the creation of the back end for an e-commerce site. This applic
 
 ## Assets
 
-- The following is the link to delpoyed code in github - https://github.com/SrilalithaN/E-commerce-backend
+- The following is the link to deployed code in github - https://github.com/SrilalithaN/E-commerce-backend
