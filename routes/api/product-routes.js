@@ -19,7 +19,9 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbProductData) => res.status(200).json(dbProductData))
+    .then((dbProductData) => {
+      res.status(200).json(dbProductData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -27,34 +29,36 @@ router.get("/", (req, res) => {
 });
 
 // get one product
-router.get("/:id", async (req, res) => {
+router.get("/:id", (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
-  try {
-    const dbProductData = await dbProductData.findOne({
-      where: {
-        id: req.params.id,
+
+  Product.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: Category,
+        attributes: ["id", "category_name"],
       },
-      include: [
-        {
-          model: Category,
-          attributes: ["id", "category_name"],
-        },
-        {
-          model: Tag,
-          attributes: ["id", "tag_name"],
-        },
-      ],
+      {
+        model: Tag,
+        attributes: ["id", "tag_name"],
+      },
+    ],
+  })
+    .then((dbProductData) => {
+      if (!dbProductData) {
+        res.status(404).json({ message: "No Product is found with this id" });
+        return;
+      }
+      res.status(200).json(dbProductData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
-    if (!dbProductData) {
-      res.status(404).json({ message: "No Product is found with this id" });
-      return;
-    }
-    res.status(200).json(dbProductData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
 });
 
 // create new product
