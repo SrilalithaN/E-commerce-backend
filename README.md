@@ -2,7 +2,7 @@
 
 ## Description
 
-- This project is the creation of the back end for an e-commerce site. This application uses Express.js API and Sequelize to interact with a MySQL database. This application displays creation of database using mySQL with models and associations. Then demonstrates the API Routes to perform RESTful CRUD operations displayed in the walk through videos below.
+This project is the creation of the back end for an e-commerce site. This application uses Express.js API and Sequelize to interact with a MySQL database. This application displays creation of database using mySQL with models and associations. Then demonstrates the API Routes to perform RESTful CRUD operations displayed in the walk through videos below.
 
 ## Table Of Contents
 
@@ -27,7 +27,7 @@
 
 * Then source schema.sql.
 
-* To seed the file run `npm run seed` or `npm seeds/index.js`.
+* To seed the file run `npm run seed` or `node seeds/index.js`.
 
 * Finally to connect to server run `node server.js`.
 
